@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Педагогика | 3-әдебиет</title>
+
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --main: #2563eb;
+      --main-dark: #1d4ed8;
+      --soft: #e0ecff;
+      --border: #e5e7eb;
+      --correct: #16a34a;
+      --correct-bg: #dcfce7;
+      --wrong: #dc2626;
+      --wrong-bg: #fee2e2;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 30px 16px 24px;
+      background: linear-gradient(135deg, #1d4ed8, #2563eb, #60a5fa);
+      color: white;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 25px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    header p {
+      margin: 0 auto;
+      max-width: 780px;
+      font-size: 15px;
+      opacity: 0.95;
+    }
+
+    main {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 18px 14px 70px;
+    }
+
+    .intro-card,
+    .nav-card,
+    .test-card,
+    .terms-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .intro-card {
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .intro-card h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .intro-card p {
+      margin: 6px 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .source-box {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 15px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+    }
+
+    .source-box strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .source-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-title {
+      margin: 20px 0 10px;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 720px) {
+      .nav-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1020px) {
+      .nav-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .nav-card {
+      display: block;
+      padding: 14px;
+      text-decoration: none;
+      color: var(--text);
+      transition: 0.18s ease;
+    }
+
+    .nav-card:hover {
+      transform: translateY(-2px);
+      border-color: #93c5fd;
+      background: #f8fbff;
+    }
+
+    .nav-card strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+
+    .nav-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .unit {
+      margin-top: 24px;
+      scroll-margin-top: 16px;
+    }
+
+    .unit-title {
+      margin: 0 0 12px;
+      padding: 16px;
+      border-radius: var(--radius);
+      background: var(--soft);
+      border: 1px solid #bfdbfe;
+    }
+
+    .unit-title h2 {
+      margin: 0 0 6px;
+      font-size: 20px;
+    }
+
+    .unit-title p {
+      margin: 0;
+      color: #1e3a8a;
+      font-size: 15px;
+    }
+
+    .terms-card {
+      padding: 14px;
+      margin: 12px 0 14px;
+      background: #f8fafc;
+    }
+
+    .terms-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .terms-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .terms-list li {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #1e3a8a;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .test-card {
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .question-head {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .q-number {
+      min-width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--main);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .question-text {
+      margin: 0;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .options {
+      display: grid;
+      gap: 9px;
+      margin-top: 10px;
+    }
+
+    .option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 11px 12px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: #ffffff;
+      cursor: pointer;
+      transition: 0.18s ease;
+      font-size: 15px;
+    }
+
+    .option:hover {
+      border-color: #93c5fd;
+      background: #f8fbff;
+    }
+
+    .option input {
+      margin-top: 4px;
+      accent-color: var(--main);
+    }
+
+    .option.correct {
+      border-color: var(--correct);
+      background: var(--correct-bg);
+      color: #14532d;
+      font-weight: 700;
+    }
+
+    .option.wrong {
+      border-color: var(--wrong);
+      background: var(--wrong-bg);
+      color: #7f1d1d;
+    }
+
+    .explanation {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 13px;
+      border-left: 4px solid var(--correct);
+      background: #f0fdf4;
+      border-radius: 12px;
+      font-size: 14px;
+      color: #14532d;
+    }
+
+    .explanation.show {
+      display: block;
+    }
+
+    .result-box {
+      display: none;
+      margin: 16px 0;
+      padding: 14px;
+      border-radius: 15px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e3a8a;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .result-box.show {
+      display: block;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 8px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.18s ease;
+    }
+
+    .primary-btn {
+      background: var(--main);
+      color: white;
+    }
+
+    .primary-btn:hover {
+      background: var(--main-dark);
+    }
+
+    .secondary-btn {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .secondary-btn:hover {
+      background: #d1d5db;
+    }
+
+    .small-note {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .to-top {
+      position: fixed;
+      right: 14px;
+      bottom: 16px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--main);
+      color: white;
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+      z-index: 50;
+    }
+
+    .to-top:hover {
+      background: var(--main-dark);
+    }
+
+    footer {
+      margin-top: 28px;
+      padding: 20px 12px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body id="top">
+  <header>
+    <h1>Педагогика | Бастауыш сыныптар үшін</h1>
+    <p>3-әдебиет бойынша дайындық тесттері</p>
+  </header>
+
+  <main>
+    <section class="intro-card">
+      <h2>3-әдебиет бойынша тесттер</h2>
+      <p>Бұл бөлімде бастауыш білім берудің мемлекеттік жалпыға міндетті стандарты бойынша негізгі ұғымдар, білім беру мазмұны, оқу жүктемесі, білім алушылардың дайындық деңгейі және күтілетін нәтижелер қарастырылады.</p>
+
+      <div class="source-box">
+        <strong>Білім берудің барлық деңгейінің мемлекеттік жалпыға міндетті білім беру стандарттарын бекіту туралы</strong>
+        <span>Бастауыш білім берудің мемлекеттік жалпыға міндетті стандарты бойынша дайындық материалы</span>
+      </div>
+    </section>
+
+    <h2 class="nav-title">Бөлімдерге өту</h2>
+
+    <section class="nav-grid">
+      <a class="nav-card" href="#unit-standard-general">
+        <strong>1. Жалпы ережелер</strong>
+        <span>Стандарттың мақсаты, базалық мазмұн, бағалау, мониторинг, инклюзивті білім.</span>
+      </a>
+
+      <a class="nav-card" href="#unit-standard-values">
+        <strong>2. Құндылықтар және мақсат</strong>
+        <span>Базалық құндылықтар, кең ауқымды дағдылар, оқыту мен тәрбиелеу бірлігі.</span>
+      </a>
+
+      <a class="nav-card" href="#unit-standard-language">
+        <strong>3. Тіл және әдебиет</strong>
+        <span>Сауат ашу, қазақ тілі, әдебиеттік оқу, коммуникативтік тәсіл.</span>
+      </a>
+
+      <a class="nav-card" href="#unit-standard-math-science">
+        <strong>4. Математика және жаратылыстану</strong>
+        <span>Математикалық білім, цифрлық сауаттылық, зерттеу дағдылары.</span>
+      </a>
+
+      <a class="nav-card" href="#unit-standard-society-art-health">
+        <strong>5. Адам және қоғам, өнер, дене шынықтыру</strong>
+        <span>Құндылық, шығармашылық, салауатты өмір салты, қауіпсіздік.</span>
+      </a>
+
+      <a class="nav-card" href="#unit-standard-load">
+        <strong>6. Оқу жүктемесі</strong>
+        <span>Апталық жүктеме, инварианттық және вариативтік компонент, топқа бөлу.</span>
+      </a>
+
+      <a class="nav-card" href="#unit-standard-results">
+        <strong>7. Дайындық деңгейі</strong>
+        <span>Оқытудан күтілетін нәтижелер және білім беру салалары бойынша нәтижелер.</span>
+      </a>
+
+      <a class="nav-card" href="#unit-standard-final">
+        <strong>8. Қорытынды қайталау</strong>
+        <span>3-әдебиет бойынша негізгі ұғымдарды аралас бекіту.</span>
+      </a>
+    </section>
+
+    <section class="unit" id="unit-standard-general">
+      <div class="unit-title">
+        <h2>1. Жалпы ережелер</h2>
+        <p>Стандарттың жалпы мазмұны, негізгі ұғымдар және бастауыш білім беру ерекшеліктері</p>
+      </div>
+
+      <div class="terms-card">
+        <h3>Маңызды ұғымдар</h3>
+        <ul class="terms-list">
+          <li>базалық мазмұн</li>
+          <li>бағалау</li>
+          <li>бағалау критерийлері</li>
+          <li>мониторинг</li>
+          <li>инклюзивті білім</li>
+          <li>үлгілік оқу жоспары</li>
+          <li>формативті бағалау</li>
+          <li>элективті курс</li>
+        </ul>
+      </div>
+
+      <div class="test-card question" data-answer="B">
+        <div class="question-head">
+          <div class="q-number">1</div>
+          <p class="question-text">Бастауыш білім беру стандарты қандай талаптарды айқындайды?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q1" value="A">
+            <span>Оқу пәндерінің атауын, сабақ кестесін және сынып сағатының тәртібін айқындайды</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q1" value="B">
+            <span>Білім мазмұнына, оқу жүктемесіне, дайындық деңгейіне және оқу мерзіміне қойылатын талаптарды айқындайды</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q1" value="C">
+            <span>Педагогтің сабақ жоспарын, әдістемелік тәсілін және күнделікті бағалау тәртібін айқындайды</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q1" value="D">
+            <span>Сынып жетекшісінің тәрбие жоспарын, ата-анамен жұмысты және мектеп кеңесін айқындайды</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q1" value="E">
+            <span>Білім алушының үй тапсырмасын, жеке дәптерін және сабаққа қатысу тәртібін айқындайды</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: B. Стандарт бастауыш білім беру мазмұнына, оқу жүктемесінің ең жоғары көлеміне, білім алушылардың дайындық деңгейіне және оқу мерзіміне қойылатын талаптарды айқындайды.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="D">
+        <div class="question-head">
+          <div class="q-number">2</div>
+          <p class="question-text">“Бастауыш білім берудің базалық мазмұны” ұғымына қай сипаттама сәйкес келеді?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q2" value="A">
+            <span>Білім алушы таңдауы бойынша оқылатын қосымша курстардың құрамы мен көлемі</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q2" value="B">
+            <span>Педагог күнделікті сабақта қолданатын әдістердің құрамы мен көлемі</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q2" value="C">
+            <span>Сынып жетекшісі жүргізетін тәрбие жұмысының құрамы мен көлемі</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q2" value="D">
+            <span>Барлық білім беру ұйымдарында оқып білуге міндетті мазмұнның құрамы мен көлемі</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q2" value="E">
+            <span>Ата-аналар қатысатын мектепішілік іс-шаралардың құрамы мен көлемі</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: D. Бастауыш білім берудің базалық мазмұны білім беру ұйымының типіне, түріне, меншік нысанына және оқыту тіліне қарамастан оқып білуге міндетті мазмұнның құрамы, құрылымы мен көлемін білдіреді.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="A">
+        <div class="question-head">
+          <div class="q-number">3</div>
+          <p class="question-text">Стандарт бойынша “бағалау” ұғымының мәні қайсы?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q3" value="A">
+            <span>Нақты қол жеткізген оқу нәтижелерін күтілетін нәтижелермен салыстыру процесі</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q3" value="B">
+            <span>Оқу пәндерінің реттілігін оқу жүктемесінің көлемімен салыстыру процесі</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q3" value="C">
+            <span>Сабақ кестесін мектептің жылдық жоспарымен салыстыру процесі</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q3" value="D">
+            <span>Педагогтің әдістемелік жұмысын тәрбие жоспарымен салыстыру процесі</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q3" value="E">
+            <span>Сыныптағы оқушылар санын мектептің материалдық базасымен салыстыру процесі</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: A. Бағалау әзірленген критерийлер негізінде білім алушылардың нақты қол жеткізген оқу нәтижелерін оқудан күтілетін нәтижелермен салыстыру процесі ретінде беріледі.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="C">
+        <div class="question-head">
+          <div class="q-number">4</div>
+          <p class="question-text">“Бағалау критерийлері” нені білдіреді?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q4" value="A">
+            <span>Оқу пәндерінің мазмұнын реттейтін жалпы бөлімдер жүйесін</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q4" value="B">
+            <span>Оқу жүктемесінің көлемін анықтайтын апталық сағаттар жүйесін</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q4" value="C">
+            <span>Оқу жетістіктерін бағалауға негіз болатын нақты өлшеуіштер жүйесін</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q4" value="D">
+            <span>Оқу сабақтарын жоспарлауға негіз болатын күнтізбелік тақырыптар жүйесін</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q4" value="E">
+            <span>Оқу іс-шараларын ұйымдастыруға негіз болатын тәрбие бағыттары жүйесін</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: C. Бағалау критерийлері білім алушылардың оқу жетістіктерін бағалауға негіз болатын нақты өлшеуіштер ретінде түсіндіріледі.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="E">
+        <div class="question-head">
+          <div class="q-number">5</div>
+          <p class="question-text">“Білім беру процесінің мониторингі” қандай әрекеттермен сипатталады?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q5" value="A">
+            <span>Оқу пәндерін таңдау, сыныпты бөлу, сабақ кестесін өзгерту және жоспарды бекіту</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q5" value="B">
+            <span>Оқу материалын түсіндіру, тапсырма беру, жаттығу орындату және дәптерді тексеру</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q5" value="C">
+            <span>Оқу кабинетінің жабдығын таңдау, құралдарды орналастыру және іс-шара өткізу</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q5" value="D">
+            <span>Оқу пәнінің тақырыбын бөлу, сабақ мақсатын жазу және үй тапсырмасын белгілеу</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q5" value="E">
+            <span>Процестің жай-күйін бақылау, диагностикалау, талдау, бағалау және болжау</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: E. Мониторинг білім беру процесін жүзеге асыру нәтижелері мен жай-күйіндегі өзгерістерді жүйелі бақылау, диагностикалау, талдау, бағалау және болжаумен сипатталады.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="B">
+        <div class="question-head">
+          <div class="q-number">6</div>
+          <p class="question-text">“Білім беру құндылықтары” стандартта қандай рөл атқарады?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q6" value="A">
+            <span>Оқу жүктемесінің апталық көлемін есептеуге арналған техникалық көрсеткіш болады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q6" value="B">
+            <span>Білім мазмұнын айқындауға және тұлғаны қалыптастыруға бағыт беретін бағдар болады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q6" value="C">
+            <span>Сабақ кестесін құрастыруға және сыныптарды бөлуді реттеуге арналған көрсеткіш болады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q6" value="D">
+            <span>Оқу кабинеттерін жабдықтауға және мектеп кеңесін ұйымдастыруға арналған өлшем болады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q6" value="E">
+            <span>Үй тапсырмасын белгілеуге және күнделікті тәртіпті бақылауға арналған негіз болады</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: B. Білім беру құндылықтары білім беру мазмұнын айқындауға негіз болады және білім алушы тұлғасын қалыптастыруда жетекші фактор ретінде оқу мақсаттары жүйесін құруға бағдар береді.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="D">
+        <div class="question-head">
+          <div class="q-number">7</div>
+          <p class="question-text">Стандарт бойынша инклюзивті білім берудің мәні қайсы?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q7" value="A">
+            <span>Барлық білім алушыларға бірдей оқу жүктемесін өзгеріссіз қолдану</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q7" value="B">
+            <span>Барлық білім алушыларды бірдей қосымша курсқа міндетті қатыстыру</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q7" value="C">
+            <span>Барлық білім алушыларды бірдей оқу тілімен ғана оқытуды ұйымдастыру</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q7" value="D">
+            <span>Ерекше қажеттілік пен жеке мүмкіндікті ескеріп, білім алуға тең жағдай жасау</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q7" value="E">
+            <span>Ерекше қабілеті бар балаларды жеке пәндер бойынша ғана топтастыру</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: D. Инклюзивті білім беру ерекше білім беру қажеттіліктері мен жеке мүмкіндіктерін ескере отырып, барлық білім алушылардың білім алуға тең қол жеткізуі үшін жағдай жасауға бағытталады.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="A">
+        <div class="question-head">
+          <div class="q-number">8</div>
+          <p class="question-text">“Оқытудан күтілетін нәтижелер” ұғымы нені сипаттайды?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q8" value="A">
+            <span>Оқыту аяқталғанда білім алушының нені біліп, түсініп, көрсете алатынын сипаттайды</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q8" value="B">
+            <span>Оқу жылы басталғанда мұғалімнің қандай тақырыптарды жоспарлайтынын сипаттайды</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q8" value="C">
+            <span>Сабақ аяқталғанда сыныптың қандай тәртіппен шығатынын сипаттайды</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q8" value="D">
+            <span>Тоқсан аяқталғанда мектептің қандай іс-шара өткізетінін сипаттайды</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q8" value="E">
+            <span>Күн аяқталғанда оқушының қандай үй тапсырмасын алатынын сипаттайды</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: A. Оқытудан күтілетін нәтижелер оқыту процесі аяқталғанда білім алушының нені біліп, түсініп, көрсете алатынын сипаттайтын құзыреттіліктер жиынтығы болып табылады.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="C">
+        <div class="question-head">
+          <div class="q-number">9</div>
+          <p class="question-text">Үлгілік оқу жоспары қандай құжат ретінде анықталады?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q9" value="A">
+            <span>Оқу пәндерінің мазмұнын және сабақтағы әдістерді сипаттайтын құжат</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q9" value="B">
+            <span>Оқу нәтижелерін және бағалау өлшемдерін салыстыратын құжат</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q9" value="C">
+            <span>Оқу пәндері тізбесін және оқу жүктемесі компоненттерінің көлемін айқындайтын құжат</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q9" value="D">
+            <span>Оқу кабинеттерін және білім беру ортасын жабдықтауды реттейтін құжат</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q9" value="E">
+            <span>Оқу іс-шараларын және тәрбие жұмысының бағыттарын бекітетін құжат</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: C. Үлгілік оқу жоспары оқу пәндерінің тізбесін регламенттейді және оқу жүктемесінің инварианттық пен вариативтік компоненттерінің көлемін айқындайды.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="E">
+        <div class="question-head">
+          <div class="q-number">10</div>
+          <p class="question-text">Формативті бағалаудың басты ерекшелігі қайсы?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q10" value="A">
+            <span>Оқу жылы соңында білім беру деңгейін аяқтау нәтижесін анықтайды</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q10" value="B">
+            <span>Оқу кезеңі аяқталғанда бөлім бойынша қорытынды бағаны шығарады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q10" value="C">
+            <span>Оқу жоспары бойынша пәндердің жылдық көлемін ресми бекітеді</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q10" value="D">
+            <span>Оқу кабинеті мен мектеп жабдықтарының сәйкестігін тексереді</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q10" value="E">
+            <span>Күнделікті жұмыста кері байланыс беріп, оқу процесін жетілдіруге мүмкіндік жасайды</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: E. Формативті бағалау сыныптағы күнделікті жұмыс барысында жүргізіледі, мұғалім мен білім алушы арасындағы жедел кері байланысты қамтамасыз етеді және білім беру процесін жетілдіруге мүмкіндік береді.
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary-btn" onclick="showResult('unit-standard-general')">Нәтижені көрсету</button>
+        <button class="secondary-btn" onclick="resetUnit('unit-standard-general')">Қайта тапсыру</button>
+      </div>
+
+      <div class="result-box" id="result-unit-standard-general"></div>
+      <p class="small-note">Бұл блокта стандарттың жалпы ережелері мен негізгі ұғымдары бойынша сұрақтар берілді.</p>
+    </section>
+        <section class="unit" id="unit-standard-values">
+      <div class="unit-title">
+        <h2>2. Құндылықтар және мақсат</h2>
+        <p>Бастауыш білім беру мазмұнындағы базалық құндылықтар, кең ауқымды дағдылар және оқыту мен тәрбиелеу бірлігі</p>
+      </div>
+
+      <div class="terms-card">
+        <h3>Маңызды ұғымдар</h3>
+        <ul class="terms-list">
+          <li>қазақстандық патриотизм</li>
+          <li>азаматтық жауапкершілік</li>
+          <li>құрмет</li>
+          <li>ынтымақтастық</li>
+          <li>еңбек пен шығармашылық</li>
+          <li>ашықтық</li>
+          <li>өмір бойы білім алу</li>
+          <li>кең ауқымды дағдылар</li>
+        </ul>
+      </div>
+
+      <div class="test-card question" data-answer="C">
+        <div class="question-head">
+          <div class="q-number">11</div>
+          <p class="question-text">Бастауыш білім беру мазмұнында қандай құндылықтар базалық құндылықтар ретінде айқындалған?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q11" value="A">
+            <span>Тәртіп, бақылау, есептілік, пәндік үлгерім, сабаққа қатысу және мектепішілік ереже</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q11" value="B">
+            <span>Бағалау, мониторинг, аттестаттау, аккредиттеу, есеп жүргізу және сыртқы бақылау</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q11" value="C">
+            <span>Патриотизм, жауапкершілік, құрмет, ынтымақтастық, еңбек, шығармашылық, ашықтық және өмір бойы білім алу</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q11" value="D">
+            <span>Сауат ашу, математика, жаратылыстану, дүниетану, көркем еңбек және дене шынықтыру</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q11" value="E">
+            <span>Сабақ жоспары, күнтізбелік жоспар, сынып сағаты, үй тапсырмасы және оқу кабинеті</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: C. Бастауыш білім беру мазмұнында қазақстандық патриотизм мен азаматтық жауапкершілік, құрмет, ынтымақтастық, еңбек пен шығармашылық, ашықтық және өмір бойы білім алу базалық құндылықтар ретінде беріледі.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="A">
+        <div class="question-head">
+          <div class="q-number">12</div>
+          <p class="question-text">Бастауыш білім берудің мақсаты қандай тұлғаны қалыптастыруға бағытталады?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q12" value="A">
+            <span>Кең ауқымды дағдылар негіздерін меңгерген, үйлесімді қалыптасқан және дамыған білім алушы тұлғасын</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q12" value="B">
+            <span>Тек пәндік ақпаратты жаттаған, бақылау тапсырмаларын орындауға бейімделген білім алушы тұлғасын</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q12" value="C">
+            <span>Тек оқу жүктемесін орындаған, сабақ кестесіне толық қатысқан білім алушы тұлғасын</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q12" value="D">
+            <span>Тек қорытынды бағалау нәтижесін көрсеткен, күнделікті бақылаудан өткен білім алушы тұлғасын</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q12" value="E">
+            <span>Тек мектепішілік тәртіпті сақтаған, сынып сағатына қатысқан білім алушы тұлғасын</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: A. Бастауыш білім берудің мақсаты кең ауқымды дағдылар негіздерін меңгерген білім алушы тұлғасының үйлесімді қалыптасуы мен дамуына қолайлы білім беру кеңістігін жасауға бағытталады.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="D">
+        <div class="question-head">
+          <div class="q-number">13</div>
+          <p class="question-text">Кең ауқымды дағдылардың бірі ретінде қай дағды көрсетіледі?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q13" value="A">
+            <span>Сабақ кестесін әкімшілік тәртіппен құрастыру дағдысы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q13" value="B">
+            <span>Оқу кабинетін материалдық тұрғыдан жабдықтау дағдысы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q13" value="C">
+            <span>Мектеп құжаттарын есептік тәртіппен рәсімдеу дағдысы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q13" value="D">
+            <span>Білімді функционалдықпен және шығармашылықпен қолдана білу дағдысы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q13" value="E">
+            <span>Сыныптағы орындарды ұйымдастырушылық тәртіппен бөлу дағдысы</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: D. Кең ауқымды дағдылар қатарына білімді функционалдық және шығармашылық тұрғыдан қолдана білу, сын тұрғысынан ойлау, зерттеу жүргізу, АКТ қолдану, коммуникация және топпен немесе жеке жұмыс істеу дағдылары кіреді.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="B">
+        <div class="question-head">
+          <div class="q-number">14</div>
+          <p class="question-text">Бастауыш білім беру мазмұны қандай ойлауды дамыту қажеттілігін ескереді?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q14" value="A">
+            <span>Есептік, әкімшілік және бақылаушы ойлауды дамыту қажеттілігін</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q14" value="B">
+            <span>Сын тұрғысынан, шығармашыл және позитивті ойлауды дамыту қажеттілігін</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q14" value="C">
+            <span>Тек есте сақтау мен дайын жауапты қайталау ойлауын дамыту қажеттілігін</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q14" value="D">
+            <span>Тек пәндік терминдерді жаттау және көшіру ойлауын дамыту қажеттілігін</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q14" value="E">
+            <span>Тек сыртқы бақылауға бейімделген орындаушы ойлауын дамыту қажеттілігін</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: B. Бастауыш білім беру мазмұны сын тұрғысынан, шығармашыл және позитивті ойлауды дамыту қажеттілігін ескере отырып айқындалады.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="E">
+        <div class="question-head">
+          <div class="q-number">15</div>
+          <p class="question-text">Бастауыш білім беру мазмұнын айқындауда қай аспект маңызды?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q15" value="A">
+            <span>Сабақ кестесінің сыртқы тәртіпке ғана сәйкес болуы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q15" value="B">
+            <span>Үй тапсырмасының көлемін тұрақты көбейтіп отыру</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q15" value="C">
+            <span>Пәндер арасындағы байланысты азайтып, мазмұнды бөлек ұстау</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q15" value="D">
+            <span>Оқу процесін тек бақылау мен есептілікке бағындыру</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q15" value="E">
+            <span>Оқытудың, тәрбиенің және дамытудың біртұтастығын қамтамасыз ету</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: E. Бастауыш білім беру мазмұны оқытудың, тәрбие мен дамытудың біртұтастығын қамтамасыз етуді ескере отырып айқындалады.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="C">
+        <div class="question-head">
+          <div class="q-number">16</div>
+          <p class="question-text">Оқу пәндері мазмұнына қатысты стандартта қандай бағыт көрсетіледі?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q16" value="A">
+            <span>Пәндер мазмұнын бір-бірінен толық ажыратуды күшейту</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q16" value="B">
+            <span>Пәндер мазмұнын тек бақылау тапсырмасына бағындыру</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q16" value="C">
+            <span>Пәндер мазмұнының ықпалдасуын күшейте түсу</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q16" value="D">
+            <span>Пәндер мазмұнын сабақ кестесімен алмастыру</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q16" value="E">
+            <span>Пәндер мазмұнын үй тапсырмасымен шектеу</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: C. Стандарт бастауыш білім беру мазмұнында оқу пәндері мазмұнының ықпалдасуын күшейте түсудің орындылығын көрсетеді.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="A">
+        <div class="question-head">
+          <div class="q-number">17</div>
+          <p class="question-text">Үштілді білім берудің мақсаты қандай тұлғаны қалыптастыруға негізделеді?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q17" value="A">
+            <span>Кемінде үш тілді меңгеріп, әртүрлі салада үш тілде диалог жүргізе алатын көптілді тұлғаны</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q17" value="B">
+            <span>Тек бір оқу тілінде сөйлеп, тек бір пән бойынша жауап бере алатын пәндік тұлғаны</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q17" value="C">
+            <span>Тек жазбаша бақылау орындап, ауызша қарым-қатынасқа қатыспайтын орындаушы тұлғаны</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q17" value="D">
+            <span>Тек сабақ кестесін сақтап, тілдік қарым-қатынасты қажет етпейтін тәртіпті тұлғаны</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q17" value="E">
+            <span>Тек үй тапсырмасын орындап, мәдениетаралық түсінікті қолданбайтын бақылаушы тұлғаны</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: A. Үштілді білім берудің мақсаты кемінде үш тілді меңгерген, түрлі салада үш тілде диалог жүргізе алатын, өз елінің мәдениетін бағалайтын және басқа елдердің мәдениетін сыйлайтын көптілді тұлғаны қалыптастыруға негізделеді.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="D">
+        <div class="question-head">
+          <div class="q-number">18</div>
+          <p class="question-text">Үштілді білім беру іс жүзінде қандай жолмен іске асырылады?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q18" value="A">
+            <span>Пәндердің барлығын бір ғана тілде оқыту және сабақтан тыс жұмысты шектеу арқылы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q18" value="B">
+            <span>Тілдік пәндерді тек жазбаша бақылаумен бағалау және ауызша жұмысты қысқарту арқылы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q18" value="C">
+            <span>Тілдерді оқу жоспарынан бөліп тастау және тілдік қарым-қатынасты азайту арқылы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q18" value="D">
+            <span>Қазақ, орыс және шетел тілдерін деңгейлеп меңгерту және сабақтан тыс жұмысты үш тілде ұйымдастыру арқылы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q18" value="E">
+            <span>Тек аударма тапсырмаларын көбейту және барлық пәнді тілдік жаттығуға айналдыру арқылы</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: D. Үштілді білім беру қазақ, орыс және шетел тілдерінің халықаралық стандарттарға сәйкес деңгейлік меңгерілуін қамтамасыз ету және сабақтан тыс жұмысты үш тілде ұйымдастыру арқылы іске асырылады.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="B">
+        <div class="question-head">
+          <div class="q-number">19</div>
+          <p class="question-text">Құндылықтар мен күтілетін нәтижелердің байланысы қалай сипатталады?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q19" value="A">
+            <span>Құндылықтар сабақ кестесін ауыстырады, күтілетін нәтижелер оқу жүктемесін азайтады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q19" value="B">
+            <span>Құндылықтар мазмұндық негіз болады, күтілетін нәтижелер оқыту мен тәрбиенің бағытын көрсетеді</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q19" value="C">
+            <span>Құндылықтар үй тапсырмасын белгілейді, күтілетін нәтижелер сабақ уақытын қысқартады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q19" value="D">
+            <span>Құндылықтар сыныпты бөледі, күтілетін нәтижелер пәндер санын өзгертеді</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q19" value="E">
+            <span>Құндылықтар бағаларды тіркейді, күтілетін нәтижелер мектеп құжатын алмастырады</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: B. Құндылықтар күнделікті білім беру процесінің мазмұндық негізін айқындайды, ал күтілетін нәтижелер оқыту мен тәрбиелеудің мақсатын нақтылайды.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="E">
+        <div class="question-head">
+          <div class="q-number">20</div>
+          <p class="question-text">Бастауыш білім беру мақсаты мен кең ауқымды дағдылар арасындағы дұрыс байланысты таңдаңыз.</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q20" value="A">
+            <span>Мақсат сабақ кестесін сақтауға бағытталады, дағдылар оқу кабинетін безендірумен шектеледі</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q20" value="B">
+            <span>Мақсат бақылауды көбейтуге бағытталады, дағдылар тек дайын жауапты қайталаумен шектеледі</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q20" value="C">
+            <span>Мақсат пән санын көбейтуге бағытталады, дағдылар тек үй тапсырмасын орындаумен шектеледі</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q20" value="D">
+            <span>Мақсат есептілік жүргізуге бағытталады, дағдылар тек мектеп құжатын толтырумен шектеледі</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q20" value="E">
+            <span>Мақсат тұлғаның үйлесімді дамуына бағытталады, дағдылар білімді қолдану, ойлау, зерттеу және қарым-қатынасты қамтиды</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: E. Бастауыш білім берудің мақсаты білім алушы тұлғасының үйлесімді қалыптасуы мен дамуына бағытталады. Кең ауқымды дағдылар білімді қолдану, сын тұрғысынан ойлау, зерттеу, АКТ қолдану, коммуникация және топпен немесе жеке жұмыс істеуді қамтиды.
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary-btn" onclick="showResult('unit-standard-values')">Нәтижені көрсету</button>
+        <button class="secondary-btn" onclick="resetUnit('unit-standard-values')">Қайта тапсыру</button>
+      </div>
+
+      <div class="result-box" id="result-unit-standard-values"></div>
+      <p class="small-note">Бұл блокта бастауыш білім берудің құндылықтары, мақсаты және кең ауқымды дағдылары қарастырылды.</p>
+    </section>
+        <section class="unit" id="unit-standard-language">
+      <div class="unit-title">
+        <h2>3. Тіл және әдебиет</h2>
+        <p>Сауат ашу, қазақ тілі, әдебиеттік оқу, тілдік дағдылар және коммуникативтік тәсіл</p>
+      </div>
+
+      <div class="terms-card">
+        <h3>Маңызды ұғымдар</h3>
+        <ul class="terms-list">
+          <li>сауат ашу</li>
+          <li>қазақ тілі</li>
+          <li>әдебиеттік оқу</li>
+          <li>тыңдалым</li>
+          <li>айтылым</li>
+          <li>оқылым</li>
+          <li>жазылым</li>
+          <li>коммуникативтік тәсіл</li>
+        </ul>
+      </div>
+
+      <div class="test-card question" data-answer="C">
+        <div class="question-head">
+          <div class="q-number">21</div>
+          <p class="question-text">“Тіл және әдебиет” білім беру саласының мазмұны қай пәндер арқылы жүзеге асырылады?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q21" value="A">
+            <span>Математика, цифрлық сауаттылық, жаратылыстану және дүниетану пәндері арқылы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q21" value="B">
+            <span>Музыка, көркем еңбек, дене шынықтыру және өзін-өзі тану пәндері арқылы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q21" value="C">
+            <span>Сауат ашу, қазақ тілі, әдебиеттік оқу, шетел тілі және тілдік пәндер арқылы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q21" value="D">
+            <span>Жаратылыстану, дүниетану, еңбекке баулу және қауіпсіздік негіздері арқылы</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q21" value="E">
+            <span>Дене шынықтыру, музыка, көркем еңбек және сынып сағаты арқылы</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: C. “Тіл және әдебиет” білім беру саласының мазмұны сауат ашу, қазақ тілі, әдебиеттік оқу, шетел тілі және оқыту тіліне байланысты басқа тілдік пәндер арқылы жүзеге асырылады.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="A">
+        <div class="question-head">
+          <div class="q-number">22</div>
+          <p class="question-text">Тілдік пәндердің мазмұнында қандай тәсілді қолдану көзделеді?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q22" value="A">
+            <span>Сөйлеу әрекетінің төрт түрін дамытуға бағытталған коммуникативтік тәсілді</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q22" value="B">
+            <span>Тек жазбаша тапсырмаларды орындауға бағытталған бақылаушы тәсілді</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q22" value="C">
+            <span>Тек мәтінді көшіріп жазуға бағытталған қайталаушы тәсілді</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q22" value="D">
+            <span>Тек грамматикалық ережені жаттауға бағытталған есте сақтаушы тәсілді</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q22" value="E">
+            <span>Тек диктант пен мазмұндама жазуға бағытталған тексеруші тәсілді</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: A. Тілдік пәндер мазмұнында сөйлеу әрекетінің төрт түрі бойынша дағдыларды дамытуға бағытталған коммуникативтік тәсілді қолдану көзделеді.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="D">
+        <div class="question-head">
+          <div class="q-number">23</div>
+          <p class="question-text">Тілдік пәндердің мазмұны білім алушыларда нені дамытуға бағытталады?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q23" value="A">
+            <span>Тек математикалық есептеу алгоритмін және өлшем дағдыларын дамытуға</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q23" value="B">
+            <span>Тек табиғат құбылыстарын бақылау және зерттеу дағдыларын дамытуға</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q23" value="C">
+            <span>Тек дене жаттығуларын орындау және қимыл белсенділігін дамытуға</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q23" value="D">
+            <span>Тілдерді үйренуге қызығушылық пен бастапқы коммуникативтік дағдыларды дамытуға</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q23" value="E">
+            <span>Тек бейнелеу өнері мен музыкалық шығармашылық дағдыларын дамытуға</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: D. Тілдік пәндердің мазмұны ойын және танымдық іс-әрекеттер арқылы тілдерді үйренуге қызығушылық пен оң қатынасты, ақпарат алмасу және мәтінмен жұмыс істеу үшін бастапқы коммуникативтік дағдыларды қалыптастыруға бағытталады.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="B">
+        <div class="question-head">
+          <div class="q-number">24</div>
+          <p class="question-text">Қазақ тілі, орыс тілі немесе ана тілін оқыту тілі ретінде үйрету неге негізделеді?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q24" value="A">
+            <span>Тек тілдік ережелерді жаттатуға және дайын жауаптарды қайталатуға негізделеді</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q24" value="B">
+            <span>Тілдік дағдыларды дамыту және мәтіндермен өз бетінше жұмыс істеу үшін әдеби мәтіндерді пайдалануға негізделеді</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q24" value="C">
+            <span>Тек сыныптан тыс іс-шараларға қатыстыру және тәрбие жұмысын ұйымдастыруға негізделеді</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q24" value="D">
+            <span>Тек оқу жүктемесін есептеу және сабақ кестесін құрастыру талаптарына негізделеді</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q24" value="E">
+            <span>Тек пәндік бақылау жұмыстарын көбейту және қорытынды бағаны шығаруға негізделеді</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: B. Оқыту тілі ретінде қазақ тілі, орыс тілі немесе ана тілін үйрету тілдік дағдыларды дамытуға және мәтіндердің әртүрлі түрлері мен типтерімен өз бетінше жұмыс істеуге машықтандыру үшін әдеби мәтіндерді пайдалануға негізделеді.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="E">
+        <div class="question-head">
+          <div class="q-number">25</div>
+          <p class="question-text">Екінші және үшінші тілді оқыту қандай бағытқа бағдарланған?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q25" value="A">
+            <span>Тілдерді тек жазбаша бақылау арқылы меңгерту бағытына</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q25" value="B">
+            <span>Тілдерді тек грамматикалық ереже жаттау арқылы меңгерту бағытына</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q25" value="C">
+            <span>Тілдерді тек мәтінді көшіріп жазу арқылы меңгерту бағытына</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q25" value="D">
+            <span>Тілдерді тек аударма тапсырмасын орындау арқылы меңгерту бағытына</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q25" value="E">
+            <span>Тілдерді деңгейлеп меңгерту бағытына</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: E. Екінші тіл мен үшінші тілді оқыту тілді деңгейлеп меңгеруге бағдарланады.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="C">
+        <div class="question-head">
+          <div class="q-number">26</div>
+          <p class="question-text">Бастауыш білім соңында тыңдалым және айтылым бойынша білім алушы қандай нәтиже көрсетуі тиіс?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q26" value="A">
+            <span>Есептерді шығарып, өлшемдерді қолданып, деректерді кесте арқылы бере алады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q26" value="B">
+            <span>Табиғат құбылыстарын бақылап, зерттеу жүргізіп, қоршаған ортаны түсіндіре алады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q26" value="C">
+            <span>Мәтіннің негізгі мазмұнын түсініп жеткізеді, пікірталасқа қатысып, өз көзқарасын дәлелдей алады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q26" value="D">
+            <span>Көркем еңбек материалдарын қолданып, бейнелеу және музыкалық жұмыс орындай алады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q26" value="E">
+            <span>Дене жаттығуларын орындап, ұлттық ойындар туралы ақпаратты қолдана алады</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: C. Тыңдалым және айтылым бойынша білім алушы мәтіннің негізгі мазмұнын түсініп жеткізеді, пікірталас тақырыбын түсінеді, сөйлеу нормасын сақтайды, диалогқа қатысады және өз көзқарасын дәлелдей алады.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="A">
+        <div class="question-head">
+          <div class="q-number">27</div>
+          <p class="question-text">Оқылым бойынша бастауыш білім соңында қандай нәтиже күтіледі?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q27" value="A">
+            <span>Көркем және көркем емес мәтіндерді ажыратып, жанрын, идеясын және кейіпкерлер әрекетін талдай алады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q27" value="B">
+            <span>Математикалық есептерді шығарып, өлшем және есептеу дағдыларын қолдана алады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q27" value="C">
+            <span>Табиғат нысандарын бақылап, зерттеу дағдыларын бастапқы деңгейде қолдана алады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q27" value="D">
+            <span>Қоғамдағы қатынастарды түсініп, отбасындағы жауапкершілік туралы айта алады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q27" value="E">
+            <span>Дене жаттығуларын орындап, салауатты өмір салты мәдениетін сақтай алады</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: A. Оқылым бойынша білім алушы халық ауыз әдебиеті мен балалар әдебиеті туындыларын оқиды, көркем және көркем емес мәтіндерді ажыратады, негізгі идеяны, жанрды, кейіпкерлер әрекетін талдайды.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="D">
+        <div class="question-head">
+          <div class="q-number">28</div>
+          <p class="question-text">Жазылым бойынша бастауыш білім соңында білім алушы қандай нәтиже көрсетуі тиіс?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q28" value="A">
+            <span>Сандармен амалдар орындап, есептер шығарып, диаграмма құрастыра алады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q28" value="B">
+            <span>Табиғат құбылыстарын бақылап, зерттеу жүргізіп, қорытынды жасай алады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q28" value="C">
+            <span>Дене жаттығуларын орындап, қозғалыс белсенділігін сақтай алады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q28" value="D">
+            <span>Әртүрлі типте мәтін құрастырып, грамматикалық және орфографиялық нормаларға сай жаза алады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q28" value="E">
+            <span>Музыкалық және көркем шығармашылық жұмыс орындап, өнер түрлерін ажырата алады</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: D. Жазылым бойынша білім алушы әртүрлі типте, жанр мен стильде мәтін құрастырып жазады, грамматикалық, пунктуациялық және орфографиялық нормаларды сақтайды.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="B">
+        <div class="question-head">
+          <div class="q-number">29</div>
+          <p class="question-text">Коммуникативтік тәсілдің тілдік пәндердегі негізгі қызметі қайсы?</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q29" value="A">
+            <span>Оқушыны тек ережені жаттауға және дайын сөйлемді көшіруге бейімдеу</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q29" value="B">
+            <span>Оқушыны ақпарат алмасуға, мәтінмен жұмыс істеуге және нақты жағдайда тіл қолдануға бейімдеу</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q29" value="C">
+            <span>Оқушыны тек жазбаша бақылау арқылы бағалауға және ауызша сөйлеуді шектеуге бейімдеу</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q29" value="D">
+            <span>Оқушыны тек мәтінді жаттауға және мазмұнын өзгеріссіз қайталауға бейімдеу</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q29" value="E">
+            <span>Оқушыны тек диктант жазуға және грамматикалық талдауды орындауға бейімдеу</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: B. Коммуникативтік тәсіл ақпарат алмасу, тілдік материал ретінде мәтінмен жұмыс істеу, сөз орамдарының мәнін түсіну және оларды нақты жағдайларда қолдану дағдыларын қалыптастыруға бағытталады.
+        </div>
+      </div>
+
+      <div class="test-card question" data-answer="E">
+        <div class="question-head">
+          <div class="q-number">30</div>
+          <p class="question-text">“Тіл және әдебиет” саласындағы нәтижелердің дұрыс байланысын таңдаңыз.</p>
+        </div>
+
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q30" value="A">
+            <span>Тыңдалым есеп шығаруға, оқылым тәжірибе жасауға, жазылым қимыл орындауға бағытталады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q30" value="B">
+            <span>Тыңдалым сурет салуға, оқылым музыка тыңдауға, жазылым дене жаттығуына бағытталады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q30" value="C">
+            <span>Тыңдалым табиғатты бақылауға, оқылым өлшем жасауға, жазылым спорттық әрекетке бағытталады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q30" value="D">
+            <span>Тыңдалым кесте құруға, оқылым сандық дерек беруге, жазылым тәжірибе өткізуге бағытталады</span>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="q30" value="E">
+            <span>Тыңдалым түсінуге және айтуға, оқылым мәтінді талдауға, жазылым мәтін құрастырып жазуға бағытталады</span>
+          </label>
+        </div>
+
+        <div class="explanation">
+          Дұрыс жауап: E. Тіл және әдебиет саласында тыңдалым мен айтылым мәтінді түсіну, жеткізу және пікір білдірумен; оқылым мәтінді оқу, талдау және түсіндірумен; жазылым әртүрлі мәтін құрастырып жазумен байланысты.
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary-btn" onclick="showResult('unit-standard-language')">Нәтижені көрсету</button>
+        <button class="secondary-btn" onclick="resetUnit('unit-standard-language')">Қайта тапсыру</button>
+      </div>
+
+      <div class="result-box" id="result-unit-standard-language"></div>
+      <p class="small-note">Бұл блокта тілдік пәндер, коммуникативтік тәсіл және сөйлеу әрекетінің негізгі түрлері қарастырылды.</p>
+    </section>
